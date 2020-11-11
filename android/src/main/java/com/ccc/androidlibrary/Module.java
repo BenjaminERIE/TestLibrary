@@ -52,6 +52,7 @@ public class Module extends ReactContextBaseJavaModule {
   public void authenticateUser(String claimId, String lastName) {
     Log.i("claimId in library",claimId);
     Log.i("last name in library",lastName);
+    Toast.makeText(getReactApplicationContext(), lastName, 1000).show();
     CCCAPIAuthClientService service = new CCCAPIAuthClientService(ENVFactory.getInstance(getReactApplicationContext()).SHARED_ENV);
     service.onLogon(claimId, lastName, new OnCCCAPIActionCallback() {
       @Override
