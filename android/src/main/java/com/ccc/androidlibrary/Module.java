@@ -53,7 +53,7 @@ public class Module extends ReactContextBaseJavaModule {
       public void onSuccess() {
         Log.i("onSuccess of library", "Login success!");
 
-        //Toast.makeText(getReactApplicationContext(), "Login success!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getReactApplicationContext(), "Login success!", Toast.LENGTH_SHORT).show();
       }
 
       @Override
@@ -61,11 +61,11 @@ public class Module extends ReactContextBaseJavaModule {
         if (t != null) {
           Log.i("onFailure if in library", "Login failed!");
           Log.i("onFailure if in library", t.getClass().getSimpleName() + ": " + t.getMessage());
-          //Toast.makeText(getReactApplicationContext(), t.getClass().getSimpleName() + ": " + t.getMessage(), Toast.LENGTH_SHORT).show();
+          Toast.makeText(getReactApplicationContext(), t.getClass().getSimpleName() + ": " + t.getMessage(), Toast.LENGTH_SHORT).show();
         } else {
           Log.i("onFailure else library", "Login failed!");
           Log.i("onFailure else library", "StatusCode: " + statusCode + " - Payload=" + result);
-          // Toast.makeText(getReactApplicationContext(), "StatusCode: " + statusCode + " - Payload=" + result, Toast.LENGTH_SHORT).show();
+          Toast.makeText(getReactApplicationContext(), "StatusCode: " + statusCode + " - Payload=" + result, Toast.LENGTH_SHORT).show();
         }
       }
     });
