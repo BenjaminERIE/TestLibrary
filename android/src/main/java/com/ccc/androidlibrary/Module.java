@@ -69,12 +69,16 @@ public class Module extends ReactContextBaseJavaModule {
         if (t != null) {
           Log.i("onFailure if in library", "Login failed!");
           Log.i("onFailure if in library", t.getClass().getSimpleName() + ": " + t.getMessage());
+
           testShow(getReactApplicationContext, "Login Failed in Library!", 1000);
+
           Toast.makeText(getReactApplicationContext(), t.getClass().getSimpleName() + ": " + t.getMessage(), Toast.LENGTH_SHORT).show();
         } else {
           Log.i("onFailure else library", "Login failed!");
           Log.i("onFailure else library", "StatusCode: " + statusCode + " - Payload=" + result);
+
           testShow(getReactApplicationContext, "Login Failed out of Library!", 1000);
+          
           Toast.makeText(getReactApplicationContext(), "StatusCode: " + statusCode + " - Payload=" + result, Toast.LENGTH_SHORT).show();
         }
       }
