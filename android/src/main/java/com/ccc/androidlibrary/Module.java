@@ -53,13 +53,15 @@ public class Module extends ReactContextBaseJavaModule {
     Log.i("claimId in library",claimId);
     Log.i("last name in library",lastName);
     Toast.makeText(getReactApplicationContext(), lastName, 1000).show();
+    Toast.makeText(getReactApplicationContext(), claimId, 2000).show();
     CCCAPIAuthClientService service = new CCCAPIAuthClientService(ENVFactory.getInstance(getReactApplicationContext()).SHARED_ENV);
     service.onLogon(claimId, lastName, new OnCCCAPIActionCallback() {
       @Override
       public void onSuccess() {
         Log.i("onSuccess of library", "Login success!");
 
-        testShow("Login Success!", 1000);
+        testShow("Login Success!", 3000);
+        Toast.makeText(getReactApplicationContext(), "Success", 3000).show();
 
         Toast.makeText(getReactApplicationContext(), "Login success!", Toast.LENGTH_SHORT).show();
       }
@@ -70,14 +72,16 @@ public class Module extends ReactContextBaseJavaModule {
           Log.i("onFailure if in library", "Login failed!");
           Log.i("onFailure if in library", t.getClass().getSimpleName() + ": " + t.getMessage());
 
-          testShow("Login Failed in Library!", 1000);
+          testShow("Login Failed in Library!", 3000);
+          Toast.makeText(getReactApplicationContext(), "Failure", 4000).show();
 
           Toast.makeText(getReactApplicationContext(), t.getClass().getSimpleName() + ": " + t.getMessage(), Toast.LENGTH_SHORT).show();
         } else {
           Log.i("onFailure else library", "Login failed!");
           Log.i("onFailure else library", "StatusCode: " + statusCode + " - Payload=" + result);
 
-          testShow("Login Failed out of Library!", 1000);
+          testShow("Login Failed out of Library!", 3000);
+          Toast.makeText(getReactApplicationContext(), "Failurrrrrrrre", 4000).show();
 
           Toast.makeText(getReactApplicationContext(), "StatusCode: " + statusCode + " - Payload=" + result, Toast.LENGTH_SHORT).show();
         }
