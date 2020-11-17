@@ -49,22 +49,22 @@ public class Module extends ReactContextBaseJavaModule {
     Log.i("last name in library",lastName);
     CCCAPIAuthClientService service = new CCCAPIAuthClientService(ENVFactory.getInstance(getReactApplicationContext()).SHARED_ENV);
     service.onLogon(claimId, lastName, new OnCCCAPIActionCallback() {
-      @Override
+      Override
       public void onSuccess() {
         Log.i("onSuccess of library", "Login success!");
-        //Toast.makeText(getReactApplicationContext(), "Login success!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getReactApplicationContext(), "Login success!", Toast.LENGTH_SHORT).show();
       }
 
-      @Override
+      Override
       public void onFailure(RESTErrorResponse result, int statusCode, Throwable t) {
         if (t != null) {
           Log.i("onFailure if in library", "Login failed!");
           Log.i("onFailure if in library", t.getClass().getSimpleName() + ": " + t.getMessage());
-          //Toast.makeText(getReactApplicationContext(), t.getClass().getSimpleName() + ": " + t.getMessage(), Toast.LENGTH_SHORT).show();
+          Toast.makeText(getReactApplicationContext(), t.getClass().getSimpleName() + ": " + t.getMessage(), Toast.LENGTH_SHORT).show();
         } else {
           Log.i("onFailure else library", "Login failed!");
           Log.i("onFailure else library", "StatusCode: " + statusCode + " - Payload=" + result);
-          //Toast.makeText(getReactApplicationContext(), "StatusCode: " + statusCode + " - Payload=" + result, Toast.LENGTH_SHORT).show();
+          Toast.makeText(getReactApplicationContext(), "StatusCode: " + statusCode + " - Payload=" + result, Toast.LENGTH_SHORT).show();
         }
       }
     });
@@ -74,7 +74,7 @@ public class Module extends ReactContextBaseJavaModule {
   public void currentActivity() {
     //ReactApplicationContext context = getReactApplicationContext();
     Activity activity = getCurrentActivity();
-    Toast.makeText(getReactApplicationContext(), activity, duration).show();
+    
   }
 
   @ReactMethod
