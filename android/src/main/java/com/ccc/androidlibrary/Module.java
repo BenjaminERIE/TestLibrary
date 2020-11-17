@@ -49,14 +49,14 @@ public class Module extends ReactContextBaseJavaModule {
     Log.i("last name in library",lastName);
     CCCAPIAuthClientService service = new CCCAPIAuthClientService(ENVFactory.getInstance(getReactApplicationContext()).SHARED_ENV);
     service.onLogon(claimId, lastName, new OnCCCAPIActionCallback() {
-      Override
+      @Override
       Toast.makeText(getReactApplicationContext(), "First override", 2000).show();
       public void onSuccess() {
         Log.i("onSuccess of library", "Login success!");
         Toast.makeText(getReactApplicationContext(), "Login success!", Toast.LENGTH_SHORT).show();
       }
 
-      Override
+      @Override
       public void onFailure(RESTErrorResponse result, int statusCode, Throwable t) {
         if (t != null) {
           Log.i("onFailure if in library", "Login failed!");
