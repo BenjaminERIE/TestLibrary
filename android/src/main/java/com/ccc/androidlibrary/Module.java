@@ -50,6 +50,7 @@ public class Module extends ReactContextBaseJavaModule {
     CCCAPIAuthClientService service = new CCCAPIAuthClientService(ENVFactory.getInstance(getReactApplicationContext()).SHARED_ENV);
     service.onLogon(claimId, lastName, new OnCCCAPIActionCallback() {
       Override
+      Toast.makeText(getReactApplicationContext(), "First override", 2000).show();
       public void onSuccess() {
         Log.i("onSuccess of library", "Login success!");
         Toast.makeText(getReactApplicationContext(), "Login success!", Toast.LENGTH_SHORT).show();
@@ -64,7 +65,7 @@ public class Module extends ReactContextBaseJavaModule {
         } else {
           Log.i("onFailure else library", "Login failed!");
           Log.i("onFailure else library", "StatusCode: " + statusCode + " - Payload=" + result);
-          Toast.makeText(getReactApplicationContext(), "StatusCode: " + statusCode + " - Payload=" + result, Toast.LENGTH_SHORT).show();
+          /Toast.makeText(getReactApplicationContext(), "StatusCode: " + statusCode + " - Payload=" + result, Toast.LENGTH_SHORT).show();
         }
       }
     });
