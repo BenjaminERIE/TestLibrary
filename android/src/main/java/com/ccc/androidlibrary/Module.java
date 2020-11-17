@@ -50,7 +50,6 @@ public class Module extends ReactContextBaseJavaModule {
     CCCAPIAuthClientService service = new CCCAPIAuthClientService(ENVFactory.getInstance(getReactApplicationContext()).SHARED_ENV);
     service.onLogon(claimId, lastName, new OnCCCAPIActionCallback() {
       @Override
-      Toast.makeText(getReactApplicationContext(), "First override", 2000).show();
       public void onSuccess() {
         Log.i("onSuccess of library", "Login success!");
         Toast.makeText(getReactApplicationContext(), "Login success!", Toast.LENGTH_SHORT).show();
