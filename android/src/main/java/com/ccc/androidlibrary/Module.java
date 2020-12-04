@@ -84,10 +84,10 @@ public class Module extends ReactContextBaseJavaModule {
 
 //    Intent intent = new Intent(activity, SDKShowcaseActivity.class);
 //    activity.startActivity(intent);
-    Log.i("Making intent");
+    Log.i("Making intent", "About to make intent");
     Intent intent = new Intent(activity, SDKShowcaseVinScanActivity.class);
-    Log.i("Intent Made");
+    Log.i("Intent Made", "Intent successfully made");
     activity.startActivity(intent);
-    Log.i("Did activity");
+    Log.i("Did activity", "Activity succesfully run");
   }
 }
