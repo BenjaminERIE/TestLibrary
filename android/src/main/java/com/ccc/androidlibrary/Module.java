@@ -44,11 +44,6 @@ public class Module extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void TestShow(String message, int duration) {
-    Toast.makeText(getReactApplicationContext(), message, duration).show();
-  }
-
-  @ReactMethod
   public void authenticateUser(String claimId, String lastName) {
     Log.i("claimId in library",claimId);
     Log.i("last name in library",lastName);
@@ -89,7 +84,10 @@ public class Module extends ReactContextBaseJavaModule {
 
 //    Intent intent = new Intent(activity, SDKShowcaseActivity.class);
 //    activity.startActivity(intent);
+    Log.i("Making intent");
     Intent intent = new Intent(activity, SDKShowcaseVinScanActivity.class);
+    Log.i("Intent Made");
     activity.startActivity(intent);
+    Log.i("Did activity");
   }
 }
