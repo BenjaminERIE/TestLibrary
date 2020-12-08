@@ -84,7 +84,14 @@ public class Module extends ReactContextBaseJavaModule {
 
     Intent intent = new Intent(activity, SDKShowcaseActivity.class);
     activity.startActivity(intent);
-    //Intent intent = new Intent(activity, SDKShowcaseVinScanActivity.class);
-    //activity.startActivity(intent);
+  }
+
+  @ReactMethod
+  public void captureVIN() {
+    //ReactApplicationContext context = getReactApplicationContext();
+    Activity activity = getCurrentActivity();
+
+    Intent intent = new Intent(activity, SDKShowcaseVinScanActivity.class);
+    activity.startActivity(intent);
   }
 }
