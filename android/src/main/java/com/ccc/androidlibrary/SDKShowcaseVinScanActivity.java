@@ -26,7 +26,6 @@ public class SDKShowcaseVinScanActivity extends VinDecodingActivity {
     }
 
     public void scan(View view){
-        FirebaseApp.initializeApp();
         initiateScan(EnterVINManuallyActivity.class);
     }
 
