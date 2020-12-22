@@ -78,6 +78,11 @@ public class Module extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void initFireBase() {
+        FirebaseApp.initializeApp(this);
+  }
+
+  @ReactMethod
   public void capture() {
     //ReactApplicationContext context = getReactApplicationContext();
     Activity activity = getCurrentActivity();
