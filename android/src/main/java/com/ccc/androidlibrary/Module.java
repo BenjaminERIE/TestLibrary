@@ -44,11 +44,6 @@ public class Module extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void testShow(String message, int duration) {
-    Toast.makeText(getReactApplicationContext(), message, duration).show();
-  }
-
-  @ReactMethod
   public void authenticateUser(String claimId, String lastName) {
     Log.i("claimId in library",claimId);
     Log.i("last name in library",lastName);
@@ -80,11 +75,6 @@ public class Module extends ReactContextBaseJavaModule {
     //ReactApplicationContext context = getReactApplicationContext();
     Activity activity = getCurrentActivity();
     
-  }
-
-  @ReactMethod
-  public void initFireBase() {
-        FirebaseApp.initializeApp();
   }
 
   @ReactMethod
