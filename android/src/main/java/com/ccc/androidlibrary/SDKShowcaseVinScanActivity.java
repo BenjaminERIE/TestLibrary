@@ -19,13 +19,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 public class SDKShowcaseVinScanActivity extends VinDecodingActivity {
 
-    private RedFlagIntegrator integrator;
+    //private RedFlagIntegrator integrator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sdkshowcase_vin_scan);
-        this.integrator = new QERedFlagIntegrator();
+        //this.integrator = new QERedFlagIntegrator();
     }
 
     public void scan(View view){
@@ -42,7 +42,7 @@ public class SDKShowcaseVinScanActivity extends VinDecodingActivity {
     @Override
     protected void onValidVin(String decoded, String imagePath) {
         Toast.makeText(this, "Scanned valid VIN: " + decoded + " - Image Path=" + imagePath, Toast.LENGTH_LONG).show();
-        integrator.addRedFlagIntegration(getApplicationContext(), decoded, imagePath, false, null);
+        //integrator.addRedFlagIntegration(getApplicationContext(), decoded, imagePath, false, null);
 
         //final String vin = "JHLRD68545C011932";
         /*    CCCAPIVinDecodeClientService service = new CCCAPIVinDecodeClientService(ENVFactory.getInstance(this).SHARED_ENV);
