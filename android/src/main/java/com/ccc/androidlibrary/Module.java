@@ -84,7 +84,7 @@ public class Module extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void initFireBase() {
-        FirebaseApp.initializeApp(this);
+        FirebaseApp.initializeApp();
   }
 
   @ReactMethod
@@ -99,7 +99,7 @@ public class Module extends ReactContextBaseJavaModule {
   @ReactMethod
   public void captureVIN() {
     //ReactApplicationContext context = getReactApplicationContext();
-    FirebaseApp.initializeApp(this);
+    FirebaseApp.initializeApp();
     Activity activity = getCurrentActivity();
 
     Intent intent = new Intent(activity, SDKShowcaseVinScanActivity.class);
