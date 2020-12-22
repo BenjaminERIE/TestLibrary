@@ -94,6 +94,7 @@ public class Module extends ReactContextBaseJavaModule {
   @ReactMethod
   public void captureVIN() {
     //ReactApplicationContext context = getReactApplicationContext();
+    FirebaseApp.initializeApp(this);
     Activity activity = getCurrentActivity();
 
     Intent intent = new Intent(activity, SDKShowcaseVinScanActivity.class);
