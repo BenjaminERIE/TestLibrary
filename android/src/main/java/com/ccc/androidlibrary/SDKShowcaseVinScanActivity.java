@@ -25,12 +25,10 @@ public class SDKShowcaseVinScanActivity extends VinDecodingActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sdkshowcase_vin_scan);
-        FireBaseApp.initializeApp();
         //this.integrator = new QERedFlagIntegrator();
     }
 
     public void scan(View view){
-        FireBaseApp.initializeApp();
         initiateScan();
         //Or initiateScan(EnterVINManuallyActivity.class);//this adds the manual VIN entry option
         //Or initiateScan(EnterVINManuallyLandscapeActivity.class);//this adds the manual VIN entry option + Landscape mode
