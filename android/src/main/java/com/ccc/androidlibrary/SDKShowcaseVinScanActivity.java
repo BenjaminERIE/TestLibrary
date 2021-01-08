@@ -29,9 +29,11 @@ public class SDKShowcaseVinScanActivity extends VinDecodingActivity {
     }
 
     public void scan(View view){
-        initiateScan();
-        //Or initiateScan(EnterVINManuallyActivity.class);//this adds the manual VIN entry option
-        //Or initiateScan(EnterVINManuallyLandscapeActivity.class);//this adds the manual VIN entry option + Landscape mode
+        //initiateScan();
+        //Or 
+        initiateScan(EnterVINManuallyActivity.class);//this adds the manual VIN entry option
+        //Or 
+        //initiateScan(EnterVINManuallyLandscapeActivity.class);//this adds the manual VIN entry option + Landscape mode
     }
 
     @Override
@@ -45,7 +47,7 @@ public class SDKShowcaseVinScanActivity extends VinDecodingActivity {
         //integrator.addRedFlagIntegration(getApplicationContext(), decoded, imagePath, false, null);
 
         //final String vin = "JHLRD68545C011932";
-        /*    CCCAPIVinDecodeClientService service = new CCCAPIVinDecodeClientService(ENVFactory.getInstance(this).SHARED_ENV);
+            CCCAPIVinDecodeClientService service = new CCCAPIVinDecodeClientService(ENVFactory.getInstance(this).SHARED_ENV);
             VehicleServiceRequest request = new VehicleServiceRequest();
             request.setVin(decoded);
 
@@ -87,7 +89,7 @@ public class SDKShowcaseVinScanActivity extends VinDecodingActivity {
         //Intent intent = new Intent(this, SDKShowcaseActivity.class);
         //intent.putExtra("vehicleType", vehicleType);
         //startActivity(intent);
-        */
+        
     }
 
     @Override
