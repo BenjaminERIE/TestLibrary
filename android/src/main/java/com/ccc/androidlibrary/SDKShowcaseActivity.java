@@ -34,6 +34,7 @@ public class SDKShowcaseActivity extends LogSupportActivity {
     private ProgressBar spinner;
     private LinearLayout buttons;
 
+//This sets a few UI things, and I believe, this is where you can override the overylay for specific vehicle types as well.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +77,7 @@ public class SDKShowcaseActivity extends LogSupportActivity {
 //        startActivityForResult(intent, LOGIN_REQUEST);
 //    }
 
+//This starts the process of taking a photo, calling PhotoCaptureShowcaseActivity.class.
     public void photo(View view) {
         Intent intent = new Intent(this, PhotoCaptureShowcaseActivity.class);
         startActivity(intent);
@@ -106,6 +108,7 @@ public class SDKShowcaseActivity extends LogSupportActivity {
 //        }
 //    }
 //
+//If the user is authenticated, this gets the current status of the workflow state.
     public void workflowState(View view) {
         if(authenticated()) {
             capturedPhotoService.getWorkflowState(new OnResult<ExpressEstimateWorkflowState>() {
@@ -121,7 +124,8 @@ public class SDKShowcaseActivity extends LogSupportActivity {
             });
         }
     }
-//
+
+//If the user is authenticated, this will call SDKShowcaseVinScanActivity.class
     public void vinScan(View view){
         if(authenticated()) {
             Intent intent = new Intent(this, SDKShowcaseVinScanActivity.class);
@@ -129,6 +133,8 @@ public class SDKShowcaseActivity extends LogSupportActivity {
         }
     }
 
+//If the user is authenticated, this will decode the vin to get the vehicle type. Specifically, it is referenced as bodyTypeCode, and vehicleType.
+//This does not decide what the overlay is, and instead, only prints out key parts of the vin, such as vehicleType or bodyTypeCode, in the log.
     public void vinDecode(View view) throws Exception {
         final String vin = "WP0AA2994VS320240";  //JHLRD68545C011932
         if(authenticated()) {
@@ -177,6 +183,8 @@ public class SDKShowcaseActivity extends LogSupportActivity {
         buttons.setVisibility(View.VISIBLE);
     }
 
+//This is a helper function, used everywhere within SDKShowcaseActivity.java where authentication is called into question. Here, it checks the CCC service side
+//to see if the user is authenticated. If they are, nothing happens. Otherwise, it shows a popup message telling the user to authenticate themselves first.
     public boolean authenticated(){
         if (!mcepClientService.isAuthenticated()) {
             runOnUiThread(new Runnable() {

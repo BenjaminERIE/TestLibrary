@@ -44,6 +44,7 @@ public class PhotoCaptureShowcaseActivity extends LogSupportActivity {
     private ProgressBar spinner;
     private LinearLayout buttons;
 
+//This only sets the UI components currently.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,16 +90,20 @@ public class PhotoCaptureShowcaseActivity extends LogSupportActivity {
         cancel();
     }
 
+//This calls to QELocalStoragePhotoCaptureActivity.class, and runs that.
     public void photo(View view) {
         Intent intent = new Intent(getApplicationContext(), QELocalStoragePhotoCaptureActivity.class);
         startActivityForResult(intent, DEMO_ACTIVITY_REQUEST_CODE);
     }
 
+//This calls to QELocalStoragePhotoCaptureLandscapeActivity.class, and runs that.
     public void photoLandscape(View view) {
         Intent intent = new Intent(getApplicationContext(), QELocalStoragePhotoCaptureLandscapeActivity.class);
         startActivityForResult(intent, DEMO_ACTIVITY_REQUEST_CODE);
     }
 
+//This will check to see if all of the required images have been taken. If not, it will ask you to take all of the required photos. If they have all been taken,
+//then it will call upload(), which will upload the photos. And if at any time, there are pending photos, it will upload those as well and let the user know.
     public void uploadImages(View view){
 //        if(!mcepClientService.isAuthenticated()){
 //            ActivityHelper.showMessage(this, "Please run the login demo first before executing this demo");
@@ -137,6 +142,8 @@ public class PhotoCaptureShowcaseActivity extends LogSupportActivity {
         }
     }
 
+//This attempts to upload the photos to CCC. Per image, if it succeeds or if it fails, then it will let the user know. If it fails, it will then cancel its actions
+//and not upload any more.
     private void upload(){
         spinner.setVisibility(View.VISIBLE);
         buttons.setVisibility(View.GONE);
@@ -175,6 +182,7 @@ public class PhotoCaptureShowcaseActivity extends LogSupportActivity {
         });
     }
 
+//This allows the user to take some additional photos. It also has special options as well.
     public void takeAdditionalPhoto(View view){
         Intent intent = new Intent(this, QELocalStorageRetakePhotoActivity.class);
 
@@ -196,12 +204,14 @@ public class PhotoCaptureShowcaseActivity extends LogSupportActivity {
         startActivityForResult(intent, DEMO_ACTIVITY_REQUEST_CODE);
     }
 
+//This allows the user to take some additional landscape photos. It also has special options as well.
     public void takeAdditionalPhotoLandscape(View view){
         Intent intent = new Intent(this, QELocalStorageRetakePhotoLandscapeActivity.class);
 
         startActivityForResult(intent, DEMO_ACTIVITY_REQUEST_CODE);
     }
 
+//This allows the user to retake the first image.
     public void retakeFirstPhoto(View view){
         List<CapturedPhotoInfo> infos = capturedPhotoService.getAllCapturedPhotoInfos();
         if(infos != null && !infos.isEmpty()){
@@ -213,6 +223,7 @@ public class PhotoCaptureShowcaseActivity extends LogSupportActivity {
         }
     }
 
+//This allows the user to retake the first landscape image.
     public void retakeFirstPhotoLandscape(View view){
         List<CapturedPhotoInfo> infos = capturedPhotoService.getAllCapturedPhotoInfos();
         if(infos != null && !infos.isEmpty()){
@@ -224,17 +235,20 @@ public class PhotoCaptureShowcaseActivity extends LogSupportActivity {
         }
     }
 
+//This makes the spinner visibility gone, and the button visibilities visible.
     private void cancel(){
         spinner.setVisibility(View.GONE);
         buttons.setVisibility(View.VISIBLE);
     }
 
+//This helps handle permissions.
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         permissionsHelper.handlePermissionResults(requestCode, permissions, grantResults);
     }
 
+//This lets the viewer know the result of their activities.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

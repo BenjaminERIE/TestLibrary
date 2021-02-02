@@ -43,6 +43,8 @@ public class Module extends ReactContextBaseJavaModule {
     Toast.makeText(getReactApplicationContext(), message, duration).show();
   }
 
+//This method gets an ID and a last name. It then calls CCC's authentication service. If the ID and lastname are in CCC's library, it will go to the onSuccess and
+//let the user know it was successful. If it is not in the library, then it will let the user know it failed and what the status code for failure is.
   @ReactMethod
   public void authenticateUser(String claimId, String lastName) {
     Log.i("claimId in library",claimId);
@@ -77,6 +79,7 @@ public class Module extends ReactContextBaseJavaModule {
     
   }
 
+//This method calls to capture photos, which is SDKShowcaseActivity.class. The methods for that class are listed down below.
   @ReactMethod
   public void capture() {
     //ReactApplicationContext context = getReactApplicationContext();
@@ -86,6 +89,7 @@ public class Module extends ReactContextBaseJavaModule {
     activity.startActivity(intent);
   }
 
+//This method calls to capture VIN, which is SDKShowcaseVinScanActivity.class. The methods for that class are listed down below.
   @ReactMethod
   public void captureVIN() {
     //ReactApplicationContext context = getReactApplicationContext();

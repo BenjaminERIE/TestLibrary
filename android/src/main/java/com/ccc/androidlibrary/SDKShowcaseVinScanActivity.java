@@ -21,6 +21,7 @@ public class SDKShowcaseVinScanActivity extends VinDecodingActivity {
 
     //private RedFlagIntegrator integrator;
 
+//This function currently only sets the content view to vin scan. This is currently purely working with the UI.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +29,9 @@ public class SDKShowcaseVinScanActivity extends VinDecodingActivity {
         //this.integrator = new QERedFlagIntegrator();
     }
 
+//THE MANUALLY ENTERING THE VIN NUMBER DOES NOT WORK AT CURRENT.
     public void scan(View view){
-        //initiateScan();
+        //initiateScan(); //initiateScan() will pull up the camera with a scan function, and can only scan. There is no room for activity here.
         //Or 
         initiateScan(EnterVINManuallyActivity.class);//this adds the manual VIN entry option
         //Or 
@@ -41,6 +43,8 @@ public class SDKShowcaseVinScanActivity extends VinDecodingActivity {
         Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
     }
 
+//This function is called if the vin is valid, and will pop up a message stating that the vin is valid as well as the image path. It will then try to set the vin
+//as the decoded vin. If no other errors occur, it will then set the overlay in the method configurePcBasedOnBodyType(Context context, String aBodyType).
     @Override
     protected void onValidVin(String decoded, String imagePath) {
         Toast.makeText(this, "Scanned valid VIN: " + decoded + " - Image Path=" + imagePath, Toast.LENGTH_LONG).show();
@@ -92,12 +96,16 @@ public class SDKShowcaseVinScanActivity extends VinDecodingActivity {
         
     }
 
+//This function is called if the vin is invalid, and will pop up a message stating that the vin is invalid as well as the image path.
     @Override
     protected void onInvalidVin(String decoded, String imagePath) {
         Toast.makeText(this, "Scanned invalid VIN: " + decoded + " - Image Path=" + imagePath, Toast.LENGTH_LONG).show();
         log.w("VIN", "Invalid VIN" + decoded);
     }
 
+//This is where the overlay is decided. If the overlay is not switching, first check in onCreate within SDKShowcaseActivity.java to see if the vehicle type is
+//being overridden. If it is not, then check between here and vinDecode in SDKShowcaseActivity.java to make sure that the vins are the same, and not being
+//overridden. You can also check to make sure that the bodyTypeCode and the vehicleType are the same as well.
     public static void configurePcBasedOnBodyType(Context context, String aBodyType) {
         if (aBodyType.equals(context.getString(R.string.body_type_code_coupe))) {
             QEPhotoCaptureConfigurationFactory.getInstance(context, true).setVehicleType(QEPhotoCaptureConfigurationFactory.VEHICLE_TYPE.COUPE);
